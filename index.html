@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment LA4YOU</title>
+  <style>
+    /* --- RESET & FONT --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #5b247a, #1bcedf);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* --- LOADING ANIMATION --- */
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      flex-direction: column;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #1bcedf;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #loader p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      color: #1bcedf;
+    }
+
+    /* --- CONTAINER --- */
+    .container {
+      display: none;
+      width: 400px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* --- PROFILE VIDEO --- */
+    .profile-video {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 3px solid #fff;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- FORM --- */
+    h2 {
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    input, select {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #ddd;
+    }
+
+    button {
+      background: linear-gradient(45deg, #1bcedf, #5b247a);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(27, 206, 223, 0.7);
+    }
+
+    footer {
+      margin-top: 15px;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>Memuat halaman pembayaran...</p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container" id="paymentContainer">
+    <div class="profile-video">
+      <!-- Ganti src dengan video kamu -->
+      <video src="profil.mp4" autoplay loop muted></video>
+    </div>
+    <h2>Form Pembayaran</h2>
+    <form>
+      <input type="text" placeholder="Nama Lengkap" required>
+      <input type="email" placeholder="Email" required>
+      <input type="number" placeholder="Nominal Pembayaran" required>
+      <select required>
+        <option value="">Pilih Metode Pembayaran</option>
+        <option value="bank">Transfer Bank</option>
+        <option value="ewallet">E-Wallet</option>
+        <option value="cc">Kartu Kredit</option>
+      </select>
+      <button type="submit">Bayar Sekarang</button>
+    </form>
+    <footer>© 2025 Payment LA4YOU — Dibuat dengan 💙</footer>
+  </div>
+
+  <script>
+    // Simulasi loading
+    window.onload = function() {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+        document.querySelector('.container').style.display = 'block';
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
